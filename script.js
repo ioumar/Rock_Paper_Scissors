@@ -1,23 +1,50 @@
+const buttonList = document.querySelector('.playground__button-list');
+const humanChoice = document.querySelector('.playground__human-choice');
+const iaChoice = document.querySelector('.playground__ia-choice');
+
+buttonList.addEventListener('click',(event)=> {
+    switch(event.target.innerText){
+        case "Pierre":
+            humanChoice.textContent = event.target.innerText;
+            break;
+        case "Papier":
+            humanChoice.textContent = event.target.innerText;
+            break;
+        case "Ciseau":
+            humanChoice.textContent = event.target.innerText;
+            break;
+        default:
+            humanChoice.textContent = "";
+    }
+
+    iaChoice.textContent = getComputerChoice();
+
+    setTimeout(()=>{
+        humanChoice.textContent = "";
+        iaChoice.textContent = "";
+    }, 2000);
+});
+
+
 function getComputerChoice(){
-   let paper = "papier";
-   let rock = "pierre";
-   let scissors = "ciseau";
+   let paper = "Papier";
+   let rock = "Pierre";
+   let scissors = "Ciseau";
    let token = Math.floor(Math.random()*3);
-   
-   if(token === 0){
-    return paper
-   }
-   else if(token === 1){
-    return rock;
-   }
-   else{
-     return scissors;
-   }
-   
+
+   switch(token){
+     case 0:
+        return paper;
+     case 1: 
+        return rock;
+    default:
+        return scissors;
+   };
 }
 
 
 function getHumanChoice(){
+
     let userEnter = prompt("Veuillez entrer pierre, papier ou ciseau : ");
     return userEnter.toLowerCase();
 }
@@ -71,7 +98,7 @@ playGround(getHumanChoice(),getComputerChoice());
 
 }
 
-playGame();
+// playGame();
 
 
 
