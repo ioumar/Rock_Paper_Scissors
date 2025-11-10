@@ -1,43 +1,56 @@
 const buttonList = document.querySelector('.playground__button-list');
-const humanChoice = document.querySelector('.playground__human-choice');
-const iaChoice = document.querySelector('.playground__ia-choice');
+const humanChoiceDisplay = document.querySelector('.playground__human-choice');
+const iaChoiceDisplay = document.querySelector('.playground__ia-choice');
+const messagePoint = document.querySelector('.playground__message');
+const humanScoreDisplay = document.querySelector('.playground__human-score');
+const iaScoreDisplay = document.querySelector('.playground__ia-score');
+
+
+let paper = "Papier";
+let rock = "Pierre";
+let scissors = "Ciseau";
+let humanChoiceValue = "";
+let iaChoiceValue = "";
+let humanScore = 0;
+let computerScore = 0;
 
 buttonList.addEventListener('click',(event)=> {
-    switch(event.target.innerText){
+    humanChoiceValue = event.target.innerText;
+    switch(humanChoiceValue){
         case "Pierre":
-            humanChoice.textContent = event.target.innerText;
+            humanChoiceDisplay.textContent = humanChoiceValue;
             break;
         case "Papier":
-            humanChoice.textContent = event.target.innerText;
+            humanChoiceDisplay.textContent = humanChoiceValue;
             break;
         case "Ciseau":
-            humanChoice.textContent = event.target.innerText;
+            humanChoiceDisplay.textContent = humanChoiceValue;
             break;
         default:
-            humanChoice.textContent = "";
+            humanChoiceDisplay.textContent = "";
     }
 
-    iaChoice.textContent = getComputerChoice();
+
+    iaChoiceValue = getComputerChoice()
+    iaChoiceDisplay.textContent = iaChoiceValue;
+    playGame();
 
     setTimeout(()=>{
-        humanChoice.textContent = "";
-        iaChoice.textContent = "";
-    }, 2000);
+        humanChoiceDisplay.textContent = "";
+        iaChoiceDisplay.textContent = "";
+        messagePoint.textContent = "";
+    }, 5000);
 });
 
 
 function getComputerChoice(){
-   let paper = "Papier";
-   let rock = "Pierre";
-   let scissors = "Ciseau";
-   let token = Math.floor(Math.random()*3);
-
+   let token = Math.floor(Math.random()*3); 
    switch(token){
      case 0:
         return paper;
      case 1: 
         return rock;
-    default:
+     case 2:
         return scissors;
    };
 }
@@ -51,54 +64,50 @@ function getHumanChoice(){
 
 
 function playGame(){
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playGround(humanChoice, computerChoice){
-        if(humanChoice === "pierre" && computerChoice === "papier"){
-            console.log("1 point pour l'ordinateur. Le papier bat la pierre");
+    function playGround(humanChoiceValue, iaChoiceValue){
+        if(humanChoiceValue == rock && iaChoiceValue == paper){
+             messagePoint.textContent = "1 point pour l'ordinateur. Le papier bat la pierre";
+            computerScore = computerScore + 1;            
+        } 
+        else if(humanChoiceValue == rock && iaChoiceValue == scissors){
+            messagePoint.textContent = "1 point pour vous. La pierre bat les ciseaux";
+            humanScore = humanScore + 1;
+        }
+        
+        else if(humanChoiceValue == paper && iaChoiceValue == scissors){
+            messagePoint.textContent = "1 point pour l'ordinateur. Les ciseaux battent le papier";
+            computerScore = computerScore + 1;
+        }
+            
+        else if(humanChoiceValue == paper && iaChoiceValue == rock){
+            messagePoint.textContent = "1 point pour vous. Le papier bat la pierre";
+            humanScore = humanScore + 1;
+        }
+            
+        else if(humanChoiceValue == scissors && iaChoiceValue == paper){
+            messagePoint.textContent = "1 point pour vous. Les ciseaux battent le papier";
+            humanScore = humanScore + 1;
+        }
+            
+        else if(humanChoiceValue == scissors && iaChoiceValue == rock){
+            messagePoint.textContent = "1 point pour l'ordinateur. La pierre bat les ciseaux";
             computerScore = computerScore + 1;
         }
     
-        else if(humanChoice === "pierre" && computerChoice === "ciseau"){
-            console.log("1 point. La pierre bat les ciseaux");
-            humanScore = humanScore + 1;
-        }
-    
-        else if(humanChoice === "papier" && computerChoice === "ciseau"){
-            console.log("1 point pour l'ordinateur. Les ciseaux battent le papier");
-            computerScore = computerScore + 1;
-        }
-        
-        else if(humanChoice === "papier" && computerChoice === "pierre"){
-            console.log("1 point. Le papier bat la pierre");
-            humanScore = humanScore + 1;
-        }
-        
-        else if(humanChoice === "ciseau" && computerChoice === "papier"){
-            console.log("1 point. Les ciseaux battent le papier");
-            humanScore = humanScore + 1;
-        }
-        
-        else if(humanChoice === "ciseau" && computerChoice === "ciseaux"){
-            console.log("1 point pour l'ordinateur. La pierre bat les ciseaux");
-            computerScore = computerScore + 1;
-        }
         else{
-            console.log("Vous êtes à égalité. Pas de points");
-        }
+            messagePoint.textContent = "Vous êtes à égalité. Pas de points";
         }
 
-playGround(getHumanChoice(),getComputerChoice());
-playGround(getHumanChoice(),getComputerChoice());
-playGround(getHumanChoice(),getComputerChoice());
-playGround(getHumanChoice(),getComputerChoice());
-playGround(getHumanChoice(),getComputerChoice());
+        humanScoreDisplay.textContent = String(humanScore);
+        iaScoreDisplay.textContent = String(computerScore);
+     }
+
+     playGround(humanChoiceValue, iaChoiceValue);
 
 }
 
-// playGame();
+
+
 
 
 
