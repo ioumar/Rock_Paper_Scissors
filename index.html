@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Rock Paper Scissors game</title>
 </head>
 <body>
+    <section class="playground">
+        <div class="playground__display">
+            <div class="playground__human">
+                <h3 class="playground__title">Vous :</h3>
+                <p class="playground__human-score">0</p>
+                <p class="playground__human-choice"></p>
+            </div>
+            <hr>
+            <div class="playground__ia">
+                <h3 class="playground__title">IA :</h3>
+                <p class="playground__ia-score">0</p>
+                <p class="playground__ia-choice"></p>
+            </div>
+        </div>
+        <ul class="playground__button-list">
+            <li class="playground__button">Pierre</li>
+            <li class="playground__button">Papier</li>
+            <li class="playground__button">Ciseau</li>
+        </ul>
+        <div class="playground__result">
+            <p class="playground__message"></p>
+            <p class="playground__point-message"></p>
+        </div>
+    </section>
     <script src="./script.js"></script>    
 </body>
 </html>

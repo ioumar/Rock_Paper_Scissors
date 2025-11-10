@@ -1,0 +1,57 @@
+.playground{
+    width: 60%;
+    margin: 5% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playground__display{
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    height: 200px;
+    width: 80%;
+}
+
+.playground__human, .playground__ia{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 200px;
+}
+
+hr{
+    width: 2px;
+    background-color: black;
+}
+
+.playground__button-list{
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    width: 40%;
+    list-style: none;
+}
+
+.playground__button{
+    font-family: Helvetica, sans-serif;
+    padding: 5px 20px;
+    background-color: aqua;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.playground__button:active{
+    background-color: rebeccapurple;
+}
+
+.playground__result{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
