@@ -39,7 +39,7 @@ buttonList.addEventListener('click',(event)=> {
         humanChoiceDisplay.textContent = "";
         iaChoiceDisplay.textContent = "";
         messagePoint.textContent = "";
-    }, 5000);
+    }, 3000);
 });
 
 
