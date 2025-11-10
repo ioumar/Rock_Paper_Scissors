@@ -56,13 +56,6 @@ function getComputerChoice(){
 }
 
 
-function getHumanChoice(){
-
-    let userEnter = prompt("Veuillez entrer pierre, papier ou ciseau : ");
-    return userEnter.toLowerCase();
-}
-
-
 function playGame(){
     function playGround(humanChoiceValue, iaChoiceValue){
         if(humanChoiceValue == rock && iaChoiceValue == paper){
