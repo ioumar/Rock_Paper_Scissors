@@ -39,7 +39,20 @@ buttonList.addEventListener('click',(event)=> {
         humanChoiceDisplay.textContent = "";
         iaChoiceDisplay.textContent = "";
         messagePoint.textContent = "";
-    }, 3000);
+    }, 4000);
+
+    if(humanScore == 5){
+        buttonList.remove();
+        messagePoint.textContent = "Terminé ! Vous avez gagné.";
+
+    } else if (computerScore == 5){
+        buttonList.removeAll();
+        messagePoint.textContent = "Terminé ! Vous avez perdu.";
+    }
+
+    
+
+
 });
 
 
